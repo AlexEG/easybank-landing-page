@@ -22,6 +22,7 @@
   </head>
   <body>
     <header class="header">
+      <div class="overlay"></div>
       <!-- a class for flexbox like framework -->
       <nav class="flex flex-jc-sb flex-ai-c">
         <!--?? / = to ./index.html  -->
@@ -29,13 +30,13 @@
           <img src="./images/logo.svg" alt="Easybank" />
         </a>
 
-        <a href="#" class="header__menu hide-for-desktop">
+        <a id="btnHamburger" href="#" class="header__menu hide-for-desktop">
           <span></span>
           <span></span>
           <span></span>
         </a>
 
-        <div class="header__links hide-for-mobile">
+        <div  class="header__links hide-for-mobile">
           <a href="#">Home</a>
           <a href="#">About</a>
           <a href="#">Contact</a>

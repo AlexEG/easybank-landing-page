@@ -1,11 +1,13 @@
+@use "./util/" as u;
 .header {
   nav {
-    padding: 24px;
+    padding: u.rem(17) u.rem(24);
   }
 
   &__logo {
     img {
-      max-width: 100%;
+      width: 8.8125rem;
+      height: 1.375rem;
     }
   }
 
@@ -25,6 +27,49 @@
   }
 
   &__links {
-    color: red;
+    a {
+      // outline: solid 1px red; /////
+      font-size: var(--font-sm);
+      color: var(--grayishBlue);
+      transition: color 300ms ease-in-out;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 4px;
+        bottom: -30px;
+        left: 0;
+        right: 0;
+        transition: opacity 300ms ease-in-out;
+        background-image: linear-gradient(
+          to right,
+          var(--limeGreen),
+          var(--brightCyan)
+        );
+        opacity: 0;
+      }
+
+      &:hover {
+        color: var(--darkBlue);
+        &::before {
+          opacity: 1;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-right: 32px;
+      }
+    }
+  }
+
+  &__cta {
+    font-size: var(--font-sm);
+    color: var(--white);
+    transition: opacity 300ms ease-in-out;
+    
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }

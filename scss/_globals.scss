@@ -45,7 +45,7 @@ a:hover {
 // Button
 button,
 .button {
-  padding: 1rem 1.875rem;
+  padding: 0.875rem 2.1875rem;
   border-radius: 50px;
   border: none;
   cursor: pointer;
@@ -54,12 +54,17 @@ button,
     var(--limeGreen),
     var(--brightCyan)
   );
-  color: var(--white);
   font-weight: 700;
 }
 
-.hide {
+// visibility
+.hide-for-mobile {
   @include u.breakpoint-down(medium) {
+    display: none;
+  }
+}
+.hide-for-desktop {
+  @include u.breakpoint-up(large) {
     display: none;
   }
 }

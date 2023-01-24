@@ -1,19 +1,19 @@
-@use "./util/" as *;
-
 .header {
-  //hamburger open styles
-  &.open {
-   
+  position: relative;
+  z-index: 1;  
 
-    .header__menu {
+  // Hamburger Open Styles
+  &.open {
+
+    .header__toggle {
       > span:first-child {
         transform: rotate(45deg);
       }
-
+      
       > span:nth-child(2) {
         opacity: 0;
       }
-
+      
       > span:last-child {
         transform: rotate(-45deg);
       }
@@ -23,85 +23,94 @@
   .overlay {
     opacity: 0;
     position: fixed;
-    top: rem(60);
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-image: linear-gradient(to bottom, var(--darkBlue), transparent);
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: linear-gradient($darkBlue, transparent);
   }
 
   nav {
-    padding: rem(17) rem(24);
+    position: relative;
+    background-color: $white;
+    padding-top: 1.0625rem;
+    padding-bottom: 1.0625rem;
   }
 
   &__logo {
+
     img {
       width: 8.8125rem;
       height: 1.375rem;
     }
+
   }
 
-  &__menu {
-    //mobile menu
+  &__toggle { // Mobile Menu Toggle
 
     > span {
       display: block;
-      width: rem(26);
-      height: rem(2);
-      background-color: var(--darkBlue);
-      transition: all 300ms ease;
+      width: 26px;
+      height: 2px;
+      background-color: $darkBlue;
+      transition: all 300ms ease-in-out;
       transform-origin: 3px 1px;
 
-      &:not(:last-child) {
+      &:not(:last-child){
         margin-bottom: 5px;
       }
     }
   }
 
-  &__links {
+  &__menu {
+    position: absolute;
+    width: calc(100% - 3rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background: $white;
+    margin-top: 1.5rem;
+    padding: 1.625rem;
+    border-radius: 5px;
+
     a {
-      // outline: solid 1px red; /////
-      font-size: var(--font-sm);
-      color: var(--grayishBlue);
-      transition: color 300ms ease-in-out;
+      display: block;
+      padding: 0.625rem;
+      color: $darkBlue;
+      text-align: center;
+    }
+  }
+
+  &__links {
+
+    a {
       position: relative;
+      font-size: $font-sm;
+      color: $grayishBlue;
+      transition: color 300ms ease-in-out;
+
+      &:not(:last-child){
+        margin-right: 32px;
+      }
 
       &::before {
         content: "";
+        display: block;
         position: absolute;
-        height: 4px;
-        bottom: -30px;
+        height: 5px;
         left: 0;
         right: 0;
-        transition: opacity 300ms ease-in-out;
-        background-image: linear-gradient(
-          to right,
-          var(--limeGreen),
-          var(--brightCyan)
-        );
+        bottom: -30px;
+        background: linear-gradient(to right, $limeGreen, $brightCyan);
         opacity: 0;
+        transition: opacity 300ms ease-in-out;
       }
-
       &:hover {
-        color: var(--darkBlue);
+        color: $darkBlue;
+
         &::before {
           opacity: 1;
         }
       }
-
-      &:not(:last-child) {
-        margin-right: 32px;
-      }
-    }
-  }
-
-  &__cta {
-    font-size: var(--font-sm);
-    color: var(--white);
-    transition: opacity 300ms ease-in-out;
-
-    &:hover {
-      opacity: 0.7;
     }
   }
 }
